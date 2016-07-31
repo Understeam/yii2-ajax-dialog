@@ -1,0 +1,24 @@
+{
+    "jsName": "understeam/yii2-ajax-dialog",
+    "description": "Yii2 popup dialog for ActiveForm",
+    "type": "extension",
+    "require": {
+        "php": ">=5.4",
+        "yiisoft/yii2": "^2.0",
+        "yiisoft/yii2-bootstrap": "^2.0",
+        "bower-asset/bootstrap3-dialog": "~1.34"
+    },
+    "license": "GPLv3",
+    "authors": [
+        {
+            "jsName": "Anatoly Rugalev",
+            "email": "anatoly.rugalev@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "understeam\\dialog\\": "src"
+        }
+    }
+}
