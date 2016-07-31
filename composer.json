@@ -1,5 +1,5 @@
 {
-    "jsName": "understeam/yii2-ajax-dialog",
+    "name": "understeam/yii2-ajax-dialog",
     "description": "Yii2 popup dialog for ActiveForm",
     "type": "extension",
     "require": {
@@ -11,7 +11,7 @@
     "license": "GPLv3",
     "authors": [
         {
-            "jsName": "Anatoly Rugalev",
+            "name": "Anatoly Rugalev",
             "email": "anatoly.rugalev@gmail.com"
         }
     ],
