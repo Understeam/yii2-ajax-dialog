@@ -16,7 +16,7 @@ use yii\web\AssetBundle;
 class DialogAsset extends AssetBundle
 {
 
-    public $sourcePath = '@vendor/understeam/yii2-dialog-form/src/assets';
+    public $sourcePath = '@vendor/understeam/yii2-ajax-dialog/src/assets';
 
     public $js = [
         'js/yii.bootstrap-dialog.js'
