@@ -1,6 +1,6 @@
 {
     "name": "understeam/yii2-ajax-dialog",
-    "description": "Yii2 popup dialog for ActiveForm",
+    "description": "Yii2 ajax dialog",
     "type": "extension",
     "require": {
         "php": ">=5.4",
