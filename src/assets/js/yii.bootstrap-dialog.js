@@ -94,16 +94,13 @@
 
                 $(document).on('submit', '#' + settings.containerId + ' form', function (e) {
                     $.pjax.submit(e, '#' + settings.containerId, JSON.parse(JSON.stringify(pjaxDefault)));
-                    if (settings.enableFormButtons) {
-                        dialog.setButtons(dialog.getButtons().slice(0, 1));
-                        if (settings.pjaxId) {
-                            var button = dialog.getButtons()[0];
-                            button.action = function (dialog) {
-                                dialog.close();
-                                $.pjax.reload('#' + settings.pjaxId);
-                            };
-                            dialog.setButtons([button]);
-                        }
+                    if (settings.pjaxId) {
+                        var button = dialog.getButtons()[0];
+                        button.action = function (dialog) {
+                            dialog.close();
+                            $.pjax.reload('#' + settings.pjaxId);
+                        };
+                        dialog.setButtons([button]);
                     }
                 });
 
