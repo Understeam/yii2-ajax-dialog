@@ -3,6 +3,12 @@
 Этот виджет позволяет легко подключить ajax загрузку контента внутрь всплывающих окон
 [Bootstrap 3 Dialog](http://nakupanda.github.io/bootstrap3-dialog).
 
+## Установка
+
+```
+$ composer require understeam/yii2-ajax-dialog:~0.1 --prefer-dist
+```
+
 ## Controller и View
 
 Первое, что требуется сделать - это view, который будет загружаться внутрь окна. Здесь ничего особенного.
