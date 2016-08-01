@@ -6,6 +6,7 @@
  */
 
 namespace understeam\dialog;
+
 use yii\base\Object;
 use yii\web\JsExpression;
 
@@ -28,7 +29,7 @@ class Button extends Object
     public $icon;
 
     public $autospin = false;
-    
+
     public function serialize()
     {
         return [
@@ -39,5 +40,9 @@ class Button extends Object
             'autospin' => $this->autospin,
             'action' => $this->action instanceof JsExpression ? $this->action : new JsExpression($this->action),
         ];
+    }
+
+    public function register(Dialog $dialog)
+    {
     }
 }

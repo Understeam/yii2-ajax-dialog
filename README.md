@@ -148,3 +148,8 @@ function openPopup(name, phone) {
 <?php $form->end() ?>
 <?php \understeam\dialog\DialogContainer::end() ?>
 ```
+
+## TODO
+
+1. Валидация ActiveForm
+2. Больше настроек для BootstrapDialog

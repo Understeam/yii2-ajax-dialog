@@ -13,7 +13,6 @@
     var defaults = {
         url: undefined,
         containerId: undefined,
-        pjaxId: undefined,
         jsName: undefined,
         selector: undefined,
         dialogOptions: {},
@@ -33,23 +32,20 @@
                     dialogData[id] = {};
                 }
 
-                var pjaxDefault = {
-                    container: '#' + settings.containerId,
-                    linkSelector: false,
-                    formSelector: false,
-                    push: false,
-                    replace: false,
-                    scrollTo: false
-                };
-
                 dialogData[id] = $.extend(dialogData[id], {settings: settings});
 
                 var dialogOptions = $.extend(settings.dialogOptions, {
                     onshow: function (dialog) {
                         dialog.setButtons(settings.buttons);
-                        var pjaxOptions = $.extend(pjaxDefault, {
-                            url: settings.url
-                        });
+                        var pjaxOptions = {
+                            url: settings.url,
+                            container: '#' + settings.containerId,
+                            linkSelector: false,
+                            formSelector: false,
+                            push: false,
+                            replace: false,
+                            scrollTo: false
+                        };
                         var pjaxLoad = '<script type="text/javascript">' +
                             '$.pjax(' + JSON.stringify(pjaxOptions) + ');' +
                             '</script>';
@@ -91,18 +87,6 @@
                         dialog.open();
                     });
                 }
-
-                $(document).on('submit', '#' + settings.containerId + ' form', function (e) {
-                    $.pjax.submit(e, '#' + settings.containerId, JSON.parse(JSON.stringify(pjaxDefault)));
-                    if (settings.pjaxId) {
-                        var button = dialog.getButtons()[0];
-                        button.action = function (dialog) {
-                            dialog.close();
-                            $.pjax.reload('#' + settings.pjaxId);
-                        };
-                        dialog.setButtons([button]);
-                    }
-                });
 
                 if (settings.jsName) {
                     window[settings.jsName] = dialog;

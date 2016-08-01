@@ -6,6 +6,7 @@
  */
 
 namespace understeam\dialog;
+
 use yii\web\JsExpression;
 
 /**
@@ -24,6 +25,8 @@ class SubmitButton extends Button
 
     public $autospin = true;
 
+    public $pjaxId;
+
     public function init()
     {
         $this->action = new JsExpression(<<<JS
@@ -31,10 +34,28 @@ function (dialog) {
     dialog.\$modalBody.find('form').first().submit()
     var button = dialog.getButton('dialog-btn-submit');
     button.hide();
+    $.pjax.reload({container: "#{$this->pjaxId}"});
 }
 JS
         );
         parent::init();
+    }
+
+    public function register(Dialog $dialog)
+    {
+        $dialog->view->registerJs(<<<JS
+$(document).on('submit', '#{$dialog->containerId} form', function (e) {
+    $.pjax.submit(e, '#{$dialog->containerId}', {
+        container: '#{$dialog->containerId}',
+        linkSelector: false,
+        formSelector: false,
+        push: false,
+        replace: false,
+        scrollTo: false
+    });
+});
+JS
+        );
     }
 
 }
