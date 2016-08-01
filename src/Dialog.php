@@ -69,12 +69,12 @@ class Dialog extends Widget
             'jsName' => $this->jsName,
             'dialogOptions' => $this->dialogOptions,
             'selector' => $this->selector,
-            'buttons' => $this->getButtons(),
+            'buttons' => $this->serializeButtons(),
             'open' => $this->open,
         ];
     }
 
-    protected function getButtons()
+    protected function serializeButtons()
     {
         $buttons = [];
         foreach ($this->buttons as $button) {
