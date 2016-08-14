@@ -82,7 +82,7 @@
                 var dialog = new BootstrapDialog(dialogOptions);
 
                 if (settings.selector) {
-                    $(document).on('click', settings.selector, function () {
+                    $(document).on('click', settings.selector, function (e) {
                         e.preventDefault();
                         dialog.open();
                     });
