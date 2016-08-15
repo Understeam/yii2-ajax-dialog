@@ -37,8 +37,16 @@
                 var dialogOptions = $.extend(settings.dialogOptions, {
                     onshow: function (dialog) {
                         dialog.setButtons(settings.buttons);
+                        var target = $(settings.selector);
+                        var url;
+                        if (target.length) {
+                            url = target.attr('href') || target.attr('data-url');
+                        }
+                        if (!url) {
+                            url = settings.url;
+                        }
                         var pjaxOptions = {
-                            url: settings.url || $e.attr('href') || $e.attr('data-url'),
+                            url: url,
                             container: '#' + settings.containerId,
                             linkSelector: false,
                             formSelector: false,
