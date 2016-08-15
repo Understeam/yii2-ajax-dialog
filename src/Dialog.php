@@ -82,7 +82,7 @@ class Dialog extends Widget
     protected function getClientOptions()
     {
         return [
-            'url' => Url::to($this->url),
+            'url' => $this->url ? Url::to($this->url) : null,
             'containerId' => $this->containerId,
             'jsName' => $this->jsName,
             'dialogOptions' => $this->dialogOptions,
