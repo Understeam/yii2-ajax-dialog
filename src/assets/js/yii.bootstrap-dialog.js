@@ -63,6 +63,9 @@
                     },
                     onshown: function (dialog) {
                         var options = dialog.getData('options');
+                        if (!options) {
+                            return;
+                        }
                         $.each(options, function (key, value) {
                             var $elem = $('#' + settings.containerId).find('[data-dialog-attr="' + key + '"]');
                             if ($elem.length) {
