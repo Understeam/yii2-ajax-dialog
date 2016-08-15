@@ -24,15 +24,17 @@ class DialogContainer extends Widget
      */
     private $_pjax;
 
+    public $pjaxOptions = [];
+
     public function init()
     {
         if (Yii::$app->request->isPjax) {
             $id = Yii::$app->request->headers->get('X-PJAX-Container');
             if ($id) {
                 $this->id = substr($id, 1);
-                $this->_pjax = Pjax::begin([
+                $this->_pjax = Pjax::begin(ArrayHelper::merge($this->pjaxOptions, [
                     'id' => $this->getId(),
-                ]);
+                ]));
             }
         }
         parent::init();
