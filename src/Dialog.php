@@ -67,9 +67,6 @@ class Dialog extends Widget
         if ($this->selector === null) {
             $this->selector = "[data-dialog=\"{$this->containerId}\"]";
         }
-        if (!$this->url) {
-            throw new InvalidConfigException("Dialog::\$url is not set");
-        }
         parent::init();
     }
 

@@ -38,7 +38,7 @@
                     onshow: function (dialog) {
                         dialog.setButtons(settings.buttons);
                         var pjaxOptions = {
-                            url: settings.url,
+                            url: settings.url || $e.attr('href') || $e.attr('data-url'),
                             container: '#' + settings.containerId,
                             linkSelector: false,
                             formSelector: false,
