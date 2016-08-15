@@ -10,6 +10,7 @@ namespace understeam\dialog;
 use Yii;
 use yii\base\Widget;
 use yii\widgets\Pjax;
+use yii\helpers\ArrayHelper;
 
 /**
  * Class DialogContainer TODO: Write class description
