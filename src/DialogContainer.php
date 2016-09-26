@@ -33,9 +33,14 @@ class DialogContainer extends Widget
             $id = Yii::$app->request->headers->get('X-PJAX-Container');
             if ($id) {
                 $this->id = substr($id, 1);
-                $this->_pjax = Pjax::begin(ArrayHelper::merge($this->pjaxOptions, [
+                $this->_pjax = Pjax::begin(ArrayHelper::merge([
                     'id' => $this->getId(),
-                ]));
+                    'linkSelector' => false,
+                    'formSelector' => false,
+                    'enablePushState' => false,
+                    'enableReplaceState' => false,
+                ], $this->pjaxOptions));
+                $this->_pjax->registerClientScript();
             }
         }
         parent::init();

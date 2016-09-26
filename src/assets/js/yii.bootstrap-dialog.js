@@ -37,7 +37,7 @@
                 var dialogOptions = $.extend(settings.dialogOptions, {
                     onshow: function (dialog) {
                         dialog.setButtons(settings.buttons);
-                        var target = $(settings.selector);
+                        var target = dialog.getData('sender');
                         var url;
                         if (target.length) {
                             url = target.attr('href') || target.attr('data-url');
@@ -45,6 +45,7 @@
                         if (!url) {
                             url = settings.url;
                         }
+                        console.log('pjax url:', url);
                         var pjaxOptions = {
                             url: url,
                             container: '#' + settings.containerId,
@@ -95,6 +96,8 @@
                 if (settings.selector) {
                     $(document).on('click', settings.selector, function (e) {
                         e.preventDefault();
+                        dialog.setData('sender', $(this));
+                        dialog.setTitle("Loading...");
                         dialog.open();
                     });
                 }
