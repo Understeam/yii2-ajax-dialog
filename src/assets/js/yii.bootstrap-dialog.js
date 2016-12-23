@@ -38,8 +38,8 @@
                     onshow: function (dialog) {
                         dialog.setButtons(settings.buttons);
                         var target = dialog.getData('sender');
-                        var url;
-                        if (target.length) {
+                        var url = dialog.getData('url');
+                        if (!url && target && target.length) {
                             url = target.attr('href') || target.attr('data-url');
                         }
                         if (!url) {
@@ -61,26 +61,6 @@
                         dialog.$modalBody.html(
                             "<div id=\"" + settings.containerId + "\">" + pjaxLoad + "</div>"
                         );
-                    },
-                    onshown: function (dialog) {
-                        var options = dialog.getData('options');
-                        if (!options) {
-                            return;
-                        }
-                        $.each(options, function (key, value) {
-                            var $elem = $('#' + settings.containerId).find('[data-dialog-attr="' + key + '"]');
-                            if ($elem.length) {
-                                if ($elem[0].tagName == 'INPUT' || $elem[0].tagName == 'TEXTAREA' || $elem[0].tagName == 'SELECT') {
-                                    $elem.val(value);
-                                } else if ($elem[0].tagName == 'CHECKBOX') {
-                                    $elem.attr('checked', value ? 'checked' : false);
-                                } else if ($elem[0].tagName == 'OPTION') {
-                                    $elem.attr('checked', value ? 'checked' : false);
-                                } else {
-                                    $elem.html(value);
-                                }
-                            }
-                        });
                     }
                 });
 
@@ -89,6 +69,24 @@
                     if (title.length) {
                         dialog.setTitle(title.text());
                     }
+                    var options = dialog.getData('options');
+                    if (!options) {
+                        return;
+                    }
+                    $.each(options, function (key, value) {
+                        var $elem = $('#' + settings.containerId).find('[data-dialog-attr="' + key + '"]');
+                        if ($elem.length) {
+                            if ($elem[0].tagName == 'INPUT' || $elem[0].tagName == 'TEXTAREA' || $elem[0].tagName == 'SELECT') {
+                                $elem.val(value);
+                            } else if ($elem[0].tagName == 'CHECKBOX') {
+                                $elem.attr('checked', value ? 'checked' : false);
+                            } else if ($elem[0].tagName == 'OPTION') {
+                                $elem.attr('checked', value ? 'checked' : false);
+                            } else {
+                                $elem.html(value);
+                            }
+                        }
+                    });
                 });
 
                 var dialog = new BootstrapDialog(dialogOptions);
