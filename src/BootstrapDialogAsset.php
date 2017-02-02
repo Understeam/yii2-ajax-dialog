@@ -25,4 +25,8 @@ class BootstrapDialogAsset extends AssetBundle
     public $css = [
         'css/bootstrap-dialog.min.css'
     ];
+
+    public $depends = [
+        'yii\bootstrap\BootstrapPluginAsset',
+    ];
 }
