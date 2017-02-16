@@ -53,7 +53,7 @@
                             url = settings.url;
                         }
                         console.log('pjax url:', url);
-                        var pjaxOptions = $.extend(options.pjaxOptions, {
+                        var pjaxOptions = $.extend(settings.pjaxOptions, {
                             url: url,
                             container: '#' + settings.containerId
                         });
