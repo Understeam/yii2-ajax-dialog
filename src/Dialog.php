@@ -59,6 +59,11 @@ class Dialog extends Widget
      */
     public $dialogOptions = [];
 
+    /**
+     * @var array pjax options
+     */
+    public $pjaxOptions = [];
+
     public function init()
     {
         if ($this->containerId === null) {
@@ -89,6 +94,7 @@ class Dialog extends Widget
             'selector' => $this->selector,
             'buttons' => $this->serializeButtons(),
             'open' => $this->open,
+            'pjaxOptions' => $this->pjaxOptions,
         ];
     }
 

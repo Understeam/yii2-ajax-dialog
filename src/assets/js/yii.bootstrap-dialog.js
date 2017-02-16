@@ -17,7 +17,14 @@
         selector: undefined,
         dialogOptions: {},
         buttons: [],
-        open: false
+        open: false,
+        pjaxOptions: {
+            linkSelector: false,
+            formSelector: false,
+            push: false,
+            replace: false,
+            scrollTo: false
+        }
     };
 
     var dialogData = {};
@@ -46,15 +53,11 @@
                             url = settings.url;
                         }
                         console.log('pjax url:', url);
-                        var pjaxOptions = {
+                        var pjaxOptions = $.extend(options.pjaxOptions, {
                             url: url,
-                            container: '#' + settings.containerId,
-                            linkSelector: false,
-                            formSelector: false,
-                            push: false,
-                            replace: false,
-                            scrollTo: false
-                        };
+                            container: '#' + settings.containerId
+                        });
+
                         var pjaxLoad = '<script type="text/javascript">' +
                             '$.pjax(' + JSON.stringify(pjaxOptions) + ');' +
                             '</script>';
